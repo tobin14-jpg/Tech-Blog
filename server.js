@@ -2,7 +2,7 @@ const path = require('path');
 const express = require('express');
 const session = require('express-session');
 const exphbs = require('express-handlebars');
-const routes = require('./routes');
+const routes = require('./routes/api/users');
 //onst helpers = require('./utils/helpers');
 
 const sequelize = require('./config/connection');
@@ -16,6 +16,7 @@ const hbs = exphbs.create({ helpers });
 
 const sess = {
   secret: process.env.COOKIE_SECRET,
+  cookie: {expires: 10 * 60 * 1000},
   cookie: {},
   resave: false,
   saveUninitialized: true,
@@ -37,5 +38,5 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(routes);
 
 sequelize.sync({ force: false }).then(() => {
-  app.listen(PORT, () => console.log('Now listening'));
+  app.listen(PORT, () => console.log(`App listening on port ${PORT}!`));
 });
