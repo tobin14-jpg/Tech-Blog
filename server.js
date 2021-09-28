@@ -17,7 +17,9 @@ const hbs = exphbs.create({ helpers });
 const sess = {
   secret: process.env.COOKIE_SECRET,
   cookie: {expires: 10 * 60 * 1000},
-  cookie: {},
+  cookie: {
+    maxAge: 3600
+  },
   resave: false,
   saveUninitialized: true,
   store: new SequelizeStore({
@@ -26,6 +28,12 @@ const sess = {
 };
 
 app.use(session(sess));
+
+// Make session info available to all pages
+app.use(function (req, res, next) {
+  res.locals.session = req.session;
+  next();
+});
 
 // Inform Express.js on which template engine to use
 app.engine('handlebars', hbs.engine);
@@ -38,5 +46,5 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(routes);
 
 sequelize.sync({ force: false }).then(() => {
-  app.listen(PORT, () => console.log(`App listening on port ${PORT}!`));
+  app.listen(PORT, () => console.log(`Now listening on port ${PORT}`));
 });
