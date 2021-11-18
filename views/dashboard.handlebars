@@ -1,0 +1,53 @@
+<div class="container">
+    <h1>Welcome to your blogs {{username}}</h1>
+    <ul class="container animate__animated animate__fadeInUp" id="blogs">
+        {{#if blogs.length}}
+        <h2>Your Blogs:</h2>
+        {{#each blogs as |blog|}}
+        <div class="blog mb-2">
+            <h2 class='fas fa-code-branch'><a href="/blog/{{blog.id}}"> {{blog.title}}</h2></a>
+        </div>
+        {{/each}}
+        {{else}}
+        <div>
+            <h2>You don't have any blog posts yet!</h2>
+        </div>
+        {{/if}}
+    </ul>
+
+    <div class="d-flex justify-content-around align-items-center p-3">
+        <p>Post a new blog!--></p>
+        <!-- Button to trigger modal -->
+        <button type="button" class="btn btn-light" data-toggle="modal" data-target="#blogModal">Add Blog</button>                
+        <!-- Modal -->
+        <div class="modal fade" id="blogModal" tabindex="-1" role="dialog" aria-labelledby="blogModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Add a Blog</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                    <!-- Form goes here -->
+                        <form class="new-blog">
+                            <div>
+                                <input type="text" name="blog-title" id="blog-title" placeholder="Blog Title" class="m-2">
+                            </div>
+                            <div>
+                                <textarea name="blog-text" id="blog-content" placeholder="Blog Content" class="m-2"></textarea>
+                            </div> 
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                <button type="button submit" class="btn btn-secondary" id="submit">Save Blog</button>
+                            </div>
+                        </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="/js/blog.js"></script>

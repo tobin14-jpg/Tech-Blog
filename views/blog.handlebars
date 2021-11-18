@@ -1,0 +1,51 @@
+<div class="blog mt-5 mb-5">
+    <h2 class="fas fa-code-branch">{{title}}</h2>
+    <h5>{{content}}</h5>
+    <p class="text-center">Posted by {{user.username}}</p>
+</div>
+
+{{#if is_current_logged_in_user_author}}
+<div class="bot-bord col-md-12">
+  <form class="form edit-form">
+    <div class="form-group"></div>
+    <label for="blog-title">Update blog title:</label>
+    <input class="form-input comment-text" type="text" id="blog-title" name="blog-title" value="{{title}}" />
+    <div class="form-group"></div>
+    <label for="blog-content">Update blog content:</label>
+    <textarea class="form-input comment-text updateContent" type="text" id="blog-content"
+      name="blog-content">{{content}}</textarea>
+    <div class="form-group d-flex justify-content-center">
+      <button id="editbutton" type="submit" class="btn btn-light">Edit post</button>
+    </div>
+    <div class="form-group d-flex justify-content-center">
+      <button id="deletebutton" type="submit" class="btn btn-light">Delete</button>
+    </div>
+</div>
+</form>
+<script src="/js/editpost.js"></script>
+{{/if}}
+
+<div class="mt-2">
+  <h2 class="text-center p-2 font-weight-bold">Comments:</h2>
+  <div class="comments mb-5">
+    {{#each comments as |comment|}}
+    <p class="text-center font-size-large text-white text-wrap">{{comment.content}}</p>
+    <h5 class="text-left">{{user.username}} on {{format_date comment.commentDate}}</h5> 
+    {{/each}}
+  </div>
+
+  <div class="row justify-content-center mb-3">
+    <div class="comment-form card col-md-6">
+      <form>
+        <div>
+          <textarea id="comment-text" class="comment-body" name="comment-body" placeholder="Add your comment here"></textarea>
+        </div>
+        <div class="row justify-content-center comment-area">
+          <button type="submit" id="addComment" class="btn btn-light mb-2">Add Comment</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script src="../js/addComment.js"></script>

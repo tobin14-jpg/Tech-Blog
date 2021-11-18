@@ -1,3 +1,24 @@
-<a href="/login">click here to login</a>
-
-<a href="/register">click here to register</a>
+<div class="p-3">
+    <div class="">
+        <h2 class="text-center font-weight-bold underline">Blogs</h2>
+    </div>
+</div>
+<div class="mt-4 text-center">
+  {{#if blogs.length}}
+  <div class="col-md-12 justify-content-center">
+    {{#each blogs as |blog|}}
+    <div class="blog mb-2 animate__animated animate__fadeInUp">
+      <div class="col-md-12">
+        <h2 class="fas fa-code-branch"><a href="/blog/{{blog.id}}"> {{blog.title}}</a></h2>
+        <p>Posted on: {{format_date blog.blogDate}} by {{user.username}}
+      </div>
+    </div>
+    {{/each}}
+  </div>
+  {{else}}
+  <div class="text-center">
+    <h2>No blog posts yet!</h2>
+    <div style="width:50%;height:50%;padding-bottom:50%;position:relative;"><iframe src="https://giphy.com/embed/6uGhT1O4sxpi8" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" ></iframe></div>
+  </div>
+  {{/if}}
+</div>

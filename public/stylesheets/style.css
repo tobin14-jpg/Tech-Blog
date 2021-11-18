@@ -1,24 +1,125 @@
-header, .project:not(:last-child) {
-    border-bottom: 1px solid #ccc;
-  }
-  
-  .no-button {
+:root {
+	--cream: #eeeedd;
+	--red: #ff2255;
+	--dark: #444444;
+	--lightgrey: #5e5e5e;
+}
+
+* {
+    box-sizing: border-box;
+    text-decoration: none;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    background-color: var(--dark);
+    font-size: 1.4rem;
+    color: black;
+    width: 95%;
+    margin: 1rem auto;
+    /* min-height: 95vh;
+    display: flex;
+    flex-direction: column; */
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+header {
+    text-align: center;
+    font-size: larger;
+    padding-top: 20px;
+}
+
+footer {
+    text-align: center;
+    margin-top: auto;
+}
+
+.container {
+    padding: 30px;
+    margin: 0 auto;
+    max-width: 1000px;
+    text-align: center;
+}
+
+.blog {
+    background-color: burlywood;
+    border-radius: 5px;
+    padding: 10px 20px;
+    text-align: center;
+} 
+
+.blog > h2 {
+    text-decoration: none;
+    color: black;
+}
+
+.blog > p {
+    font-weight: 600;
+}
+
+.btn {
+    width: 50%;
+}
+
+.input-group {
+    padding: 15px;
+}
+
+.comments {
+    border-top: 3px solid burlywood;
+    margin: 1rem 0;
+}
+
+.comments > h5 {
+    border-bottom: 3px solid burlywood;
+}
+
+.comment-form {
+    background-color: var(--lightgrey);
+    border: none;
+}
+
+.bot-bord {
+    border-bottom: 3px solid var(--lightgrey);
+}
+
+.no-button {
     background: none;
     border: none;
     padding: 0;
     cursor: pointer;
-    color: #1b89bc;
+    color: #6f7582;
     text-decoration: none;
     font-size: 100%;
   }
   
   .no-button:hover {
-    color: #065b83;
-    text-decoration: underline;
+    color: #222425;    
   }
-  
-  .dollar-amount {
-    color: #056605;
-    font-weight: bold;
-    margin-left: -5px;
-  }
+
+  input[type=text], input[type=password] {
+	width: 50%;
+	padding: 1rem;
+	border: 2px solid var(--red);
+    border-radius: 5px;
+	box-sizing: border-box;
+	resize: vertical;
+	background-color: var(--cream);
+}
+
+textarea {
+	width: 100%;
+	padding: 1rem;
+	border: 2px solid var(--red);
+    border-radius: 5px;
+	box-sizing: border-box;
+	margin: 0.5rem 0 1rem 0;
+	resize: vertical;
+	background-color: var(--cream);
+}
