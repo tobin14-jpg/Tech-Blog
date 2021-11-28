@@ -27,6 +27,8 @@ const sess = {
 
 app.use(session(sess));
 
+app.use(express.static(__dirname + '/public'));
+
 // Make session info available to all pages
 app.use(function (req, res, next) {
   res.locals.session = req.session;
