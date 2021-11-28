@@ -16,7 +16,7 @@ router.get('/', async (req, res) => {
 
     const blogs = blogData.map((blog) => blog.get({ plain: true }));
 
-    res.render('home', {
+    res.render('login', {
       blogs,
       logged_in: req.session.logged_in,
     });
@@ -32,7 +32,7 @@ router.get('/login', (req, res) => {
     return;
   }
 
-  res.render('login');
+  res.render('dashboard');
 });
 
 router.get('/register', (req, res) => {
@@ -42,7 +42,7 @@ router.get('/register', (req, res) => {
     return;
   }
 
-  res.render('register');
+  res.render('dashboard');
 });
 
 router.get('/dashboard', withAuth, async (req, res) => {
