@@ -42,7 +42,7 @@ router.get('/register', (req, res) => {
     return;
   }
 
-  res.render('dashboard');
+  res.render('register');
 });
 
 router.get('/dashboard', withAuth, async (req, res) => {
